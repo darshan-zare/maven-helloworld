@@ -11,4 +11,5 @@ phases:
       - mvn package
 artifacts:
   files:
-    - webapp/target/*.jar
+    - webapp/target/*.war
+    - server/target/*.jar
