@@ -15,8 +15,9 @@ jobs:
           command: mvn test
   
   installaws:
-    - run: aws
-    - command: apt install awscli -y
+     steps:
+       - run: aws
+       - command: apt install awscli -y
 
 sample: 
     jobs:
