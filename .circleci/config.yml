@@ -1,4 +1,3 @@
-
 version: 2.1
 jobs:
   build-and-test:
@@ -13,13 +12,16 @@ jobs:
       - run:
           name: Test
           command: mvn test
-  
-  installaws:
-     steps:
-       - run: aws
-       - command: apt install awscli -y
 
-sample: 
+  installaws:
+    docker:
+      - image: darshanzr/ubuntuimagebyd
+    steps:
+      - checkout
+      - run:
+          name: installaws
+          command: apt install awscli
+sample:
     jobs:
       - build-and-test
       - installaws
