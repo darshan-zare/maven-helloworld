@@ -21,7 +21,7 @@ jobs:
       - run:
           name: installaws
           command: apt install awscli
-sample:
+workflows:
     jobs:
       - build-and-test
       - installaws
