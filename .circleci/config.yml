@@ -25,7 +25,8 @@ jobs:
       # Then run your tests!
       - run:
           name: Test
-          command: mvn test
+          command: |
+            mvn test
             echo 'darshan'
 
 # Invoke jobs via workflows
