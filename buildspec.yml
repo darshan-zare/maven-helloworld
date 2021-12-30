@@ -3,8 +3,13 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo Build started on `date`
-      - mvn test
+      - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+      - syft version
+      - syft dir:.
+      - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+      - grype version
+      - grype .
+       
   post_build:
     commands:
       - echo Build completed on `date`
@@ -13,3 +18,7 @@ artifacts:
   files:
     - webapp/target/*.war
     - server/target/*.jar
+cache:
+  paths:
+    - '/root/.m2/**/*'
+
